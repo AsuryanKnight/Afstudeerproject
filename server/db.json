@@ -1,0 +1,510 @@
+{
+  "projects": [
+    {
+      "id": "1",
+      "name": "ABN123",
+      "group": "Group 1",
+      "client": "ABN AMRO",
+      "dueDate": "2023-07-01",
+      "description": "Briefing for Project 1.",
+      "members": [
+        {
+          "id": 1,
+          "name": "Jan Jansen",
+          "role": "Project Manager",
+          "icon": "/profile-icons/jj.png"
+        },
+        {
+          "id": 2,
+          "name": "Piet Pietersen",
+          "role": "Designer",
+          "icon": "/profile-icons/pp.png"
+        },
+        {
+          "id": 3,
+          "name": "Klaas Klaassen",
+          "role": "Ontwikkelaar",
+          "icon": "/profile-icons/kk.png"
+        }
+      ],
+      "materials": [
+        {
+          "name": "Cyber",
+          "reference": "https://example.com/materials/cyber"
+        },
+        {
+          "name": "ICT",
+          "reference": "https://example.com/materials/ict"
+        },
+        {
+          "name": "Test",
+          "reference": "Test.com"
+        }
+      ],
+      "platforms": [
+        {
+          "name": "Adform",
+          "type": "HTML ad",
+          "formats": [
+            "300x250",
+            "336x280"
+          ]
+        }
+      ],
+      "deliverables": [
+        {
+          "name": "Initial Design",
+          "link": "https://example.com/designs/initial",
+          "status": "Afgewezen",
+          "date": "2024-06-14T11:00:58.171Z",
+          "comment": "test",
+          "type": "design"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "KPN124",
+      "group": "Group 2",
+      "client": "KPN",
+      "dueDate": "2023-07-01",
+      "description": "Briefing for Project 2.",
+      "members": [
+        {
+          "id": 4,
+          "name": "Anna de Vries",
+          "role": "Project Manager",
+          "icon": "/profile-icons/ad.png"
+        },
+        {
+          "id": 5,
+          "name": "Mark Rutte",
+          "role": "Designer",
+          "icon": "/profile-icons/mr.png"
+        },
+        {
+          "id": 6,
+          "name": "Sanne Bakker",
+          "role": "Ontwikkelaar",
+          "icon": "/profile-icons/sb.png"
+        }
+      ],
+      "materials": [
+        {
+          "name": "Cyber",
+          "reference": "https://example.com/materials/cyber"
+        }
+      ],
+      "platforms": [
+        {
+          "name": "Adform",
+          "type": "HTML ad",
+          "formats": [
+            "300x250"
+          ]
+        }
+      ],
+      "deliverables": []
+    },
+    {
+      "id": "3",
+      "name": "PHI125",
+      "group": "Group 3",
+      "client": "Philips",
+      "dueDate": "2023-07-01",
+      "description": "Briefing for Project 3.",
+      "members": [
+        {
+          "id": 7,
+          "name": "Willem de Boer",
+          "role": "Project Manager",
+          "icon": "/profile-icons/wb.png"
+        },
+        {
+          "id": 2,
+          "name": "Piet Pietersen",
+          "role": "Designer",
+          "icon": "/profile-icons/pp.png"
+        },
+        {
+          "id": 8,
+          "name": "Daan van Dijk",
+          "role": "Ontwikkelaar",
+          "icon": "/profile-icons/dd.png"
+        }
+      ],
+      "materials": [
+        {
+          "name": "ICT",
+          "reference": "https://example.com/materials/ict"
+        }
+      ],
+      "platforms": [
+        {
+          "name": "Adform",
+          "type": "HTML ad",
+          "formats": [
+            "336x280"
+          ]
+        }
+      ],
+      "deliverables": [
+        {
+          "name": "Design Update",
+          "link": "https://example.com/designs/update",
+          "status": "Afgewezen",
+          "date": "2024-06-14T10:22:36.957Z",
+          "comment": "Ontbrekende onderdelen",
+          "type": "design"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "RAN126",
+      "group": "Group 1",
+      "client": "Randstad",
+      "dueDate": "2023-07-01",
+      "description": "Briefing for Project 4.",
+      "members": [
+        {
+          "id": 1,
+          "name": "Jan Jansen",
+          "role": "Project Manager",
+          "icon": "/profile-icons/jj.png"
+        },
+        {
+          "id": 5,
+          "name": "Mark Rutte",
+          "role": "Designer",
+          "icon": "/profile-icons/mr.png"
+        },
+        {
+          "id": 8,
+          "name": "Daan van Dijk",
+          "role": "Ontwikkelaar",
+          "icon": "/profile-icons/dd.png"
+        }
+      ],
+      "materials": [],
+      "platforms": [
+        {
+          "name": "Adform",
+          "type": "HTML ad",
+          "formats": [
+            "300x250"
+          ]
+        }
+      ],
+      "deliverables": [
+        {
+          "name": "Initial Development",
+          "link": "https://example.com/development/initial",
+          "status": "Goedgekeurd",
+          "date": "2024-06-14T11:30:31.984Z",
+          "comment": "",
+          "type": "development"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "HEI127",
+      "group": "Group 2",
+      "client": "Heineken",
+      "dueDate": "2023-07-01",
+      "description": "Briefing for Project 5.",
+      "members": [
+        {
+          "id": 4,
+          "name": "Anna de Vries",
+          "role": "Project Manager",
+          "icon": "/profile-icons/ad.png"
+        },
+        {
+          "id": 9,
+          "name": "Lisa van Dam",
+          "role": "Designer",
+          "icon": "/profile-icons/ld.png"
+        }
+      ],
+      "materials": [],
+      "platforms": [],
+      "deliverables": []
+    },
+    {
+      "id": "6",
+      "name": "SHE128",
+      "group": "Group 3",
+      "client": "Shell",
+      "dueDate": "2023-07-01",
+      "description": "Briefing for Project 6.",
+      "members": [
+        {
+          "id": 1,
+          "name": "Jan Jansen",
+          "role": "Project Manager",
+          "icon": "/profile-icons/jj.png"
+        },
+        {
+          "id": 3,
+          "name": "Klaas Klaassen",
+          "role": "Ontwikkelaar",
+          "icon": "/profile-icons/kk.png"
+        },
+        {
+          "id": "4",
+          "name": "Anna de Vries",
+          "icon": "/profile-icons/ad.png",
+          "role": "Designer"
+        },
+        {
+          "id": "2",
+          "name": "Piet Pietersen",
+          "icon": "/profile-icons/pp.png",
+          "role": "Project Manager"
+        }
+      ],
+      "materials": [
+        {
+          "name": "ICT",
+          "reference": "https://example.com/materials/ict"
+        }
+      ],
+      "platforms": [
+        {
+          "name": "Adform",
+          "type": "HTML ad",
+          "formats": [
+            "300x250",
+            "336x280"
+          ]
+        }
+      ],
+      "deliverables": [
+        {
+          "name": "Initial Design",
+          "link": "https://example.com/designs/initial",
+          "status": "Afgewezen",
+          "date": "2023-06-15",
+          "comment": "Missende onderdelen",
+          "type": "design"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "ING129",
+      "group": "Group 1",
+      "client": "ING",
+      "dueDate": "2023-07-01",
+      "description": "Briefing for Project 7.",
+      "members": [
+        {
+          "id": 9,
+          "name": "Lisa van Dam",
+          "role": "Project Manager",
+          "icon": "/profile-icons/ld.png"
+        },
+        {
+          "id": 5,
+          "name": "Mark Rutte",
+          "role": "Designer",
+          "icon": "/profile-icons/mr.png"
+        }
+      ],
+      "materials": [],
+      "platforms": [
+        {
+          "name": "Adform",
+          "type": "HTML ad",
+          "formats": [
+            "300x250"
+          ]
+        }
+      ],
+      "deliverables": []
+    },
+    {
+      "id": "8",
+      "name": "RAB130",
+      "group": "Group 2",
+      "client": "Rabobank",
+      "dueDate": "2023-07-01",
+      "description": "Briefing for Project 8.",
+      "members": [
+        {
+          "id": 1,
+          "name": "Jan Jansen",
+          "role": "Project Manager",
+          "icon": "/profile-icons/jj.png"
+        },
+        {
+          "id": 8,
+          "name": "Daan van Dijk",
+          "role": "Ontwikkelaar",
+          "icon": "/profile-icons/dd.png"
+        },
+        {
+          "id": 6,
+          "name": "Sanne Bakker",
+          "role": "Designer",
+          "icon": "/profile-icons/sb.png"
+        }
+      ],
+      "materials": [],
+      "platforms": [],
+      "deliverables": []
+    },
+    {
+      "id": "9",
+      "name": "UNI131",
+      "group": "Group 3",
+      "client": "Unilever",
+      "dueDate": "2023-07-01",
+      "description": "Briefing for Project 9.",
+      "members": [
+        {
+          "id": 4,
+          "name": "Anna de Vries",
+          "role": "Project Manager",
+          "icon": "/profile-icons/ad.png"
+        },
+        {
+          "id": 2,
+          "name": "Piet Pietersen",
+          "role": "Designer",
+          "icon": "/profile-icons/pp.png"
+        },
+        {
+          "id": 7,
+          "name": "Willem de Boer",
+          "role": "Ontwikkelaar",
+          "icon": "/profile-icons/wb.png"
+        }
+      ],
+      "materials": [],
+      "platforms": [
+        {
+          "name": "Adform",
+          "type": "HTML ad",
+          "formats": [
+            "300x250",
+            "336x280"
+          ]
+        }
+      ],
+      "deliverables": []
+    },
+    {
+      "id": "10",
+      "name": "ASM132",
+      "group": "Group 1",
+      "client": "ASML",
+      "dueDate": "2023-07-01",
+      "description": "Briefing for Project 10.",
+      "members": [
+        {
+          "id": 10,
+          "name": "Emma Jansen",
+          "role": "Project Manager",
+          "icon": "/profile-icons/ej.png"
+        },
+        {
+          "id": 6,
+          "name": "Sanne Bakker",
+          "role": "Designer",
+          "icon": "/profile-icons/sb.png"
+        },
+        {
+          "id": 3,
+          "name": "Klaas Klaassen",
+          "role": "Ontwikkelaar",
+          "icon": "/profile-icons/kk.png"
+        }
+      ],
+      "materials": [
+        {
+          "name": "Cyber",
+          "reference": "https://example.com/materials/cyber"
+        },
+        {
+          "name": "ICT",
+          "reference": "https://example.com/materials/ict"
+        }
+      ],
+      "platforms": [
+        {
+          "name": "Adform",
+          "type": "HTML ad",
+          "formats": [
+            "300x250",
+            "336x280"
+          ]
+        }
+      ],
+      "deliverables": [
+        {
+          "name": "ASML Project 10 banners",
+          "link": "https://github.com/robdewilligen/KipFlip",
+          "status": "Onder review",
+          "date": "2024-06-13T13:11:09.271Z",
+          "comment": "",
+          "type": "development"
+        }
+      ]
+    }
+  ],
+  "profiles": [
+    {
+      "id": "1",
+      "name": "Jan Jansen",
+      "icon": "/profile-icons/jj.png"
+    },
+    {
+      "id": "2",
+      "name": "Piet Pietersen",
+      "icon": "/profile-icons/pp.png"
+    },
+    {
+      "id": "3",
+      "name": "Klaas Klaassen",
+      "icon": "/profile-icons/kk.png"
+    },
+    {
+      "id": "4",
+      "name": "Anna de Vries",
+      "icon": "/profile-icons/ad.png"
+    },
+    {
+      "id": "5",
+      "name": "Mark Rutte",
+      "icon": "/profile-icons/mr.png"
+    },
+    {
+      "id": "6",
+      "name": "Sanne Bakker",
+      "icon": "/profile-icons/sb.png"
+    },
+    {
+      "id": "7",
+      "name": "Willem de Boer",
+      "icon": "/profile-icons/wb.png"
+    },
+    {
+      "id": "8",
+      "name": "Daan van Dijk",
+      "icon": "/profile-icons/dd.png"
+    },
+    {
+      "id": "9",
+      "name": "Lisa van Dam",
+      "icon": "/profile-icons/ld.png"
+    },
+    {
+      "id": "10",
+      "name": "Emma Jansen",
+      "icon": "/profile-icons/ej.png"
+    }
+  ]
+}
