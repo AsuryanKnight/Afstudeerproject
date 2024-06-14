@@ -49,6 +49,23 @@
             "300x250",
             "336x280"
           ]
+        },
+        {
+          "name": "Adform",
+          "type": "HTML ad",
+          "formats": [
+            "970x250",
+            "300x600",
+            "160x600",
+            "336x280"
+          ]
+        },
+        {
+          "name": "Adform",
+          "type": "HTML ad",
+          "formats": [
+            "160x600"
+          ]
         }
       ],
       "deliverables": [
@@ -241,12 +258,6 @@
       "description": "Briefing for Project 6.",
       "members": [
         {
-          "id": 1,
-          "name": "Jan Jansen",
-          "role": "Project Manager",
-          "icon": "/profile-icons/jj.png"
-        },
-        {
           "id": 3,
           "name": "Klaas Klaassen",
           "role": "Ontwikkelaar",
@@ -257,12 +268,6 @@
           "name": "Anna de Vries",
           "icon": "/profile-icons/ad.png",
           "role": "Designer"
-        },
-        {
-          "id": "2",
-          "name": "Piet Pietersen",
-          "icon": "/profile-icons/pp.png",
-          "role": "Project Manager"
         }
       ],
       "materials": [
@@ -353,7 +358,26 @@
         }
       ],
       "materials": [],
-      "platforms": [],
+      "platforms": [
+        {
+          "name": "Adform",
+          "type": "HTML ad",
+          "formats": [
+            "300x250",
+            "336x280",
+            "970x250",
+            "320x100"
+          ]
+        },
+        {
+          "name": "Adform",
+          "type": "HTML ad",
+          "formats": [
+            "300x250",
+            "320x100"
+          ]
+        }
+      ],
       "deliverables": []
     },
     {
@@ -505,6 +529,20 @@
       "id": "10",
       "name": "Emma Jansen",
       "icon": "/profile-icons/ej.png"
+    }
+  ],
+  "platforms": [
+    {
+      "name": "Adform",
+      "type": "HTML ad",
+      "formats": [
+        "300x250",
+        "336x280",
+        "160x600",
+        "300x600",
+        "970x250",
+        "320x100"
+      ]
     }
   ]
 }

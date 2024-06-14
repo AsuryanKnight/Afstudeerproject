@@ -20,12 +20,18 @@
               <div>
                 <h4 class="font-semibold">Projectmanager</h4>
                 <div class="flex space-x-2 items-center">
-                  <ProfileAvatar 
+                  <div 
                     v-for="member in project.members.filter(m => m.role === 'Project Manager')" 
                     :key="member.name" 
-                    :name="member.name" 
-                    :title="member.role" 
-                  />
+                    class="relative group"
+                  >
+                    <ProfileAvatar :name="member.name" :title="member.role" />
+                    <button 
+                      v-if="isProjectManager" 
+                      @click="confirmRemoveMember(member)"
+                      class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    >x</button>
+                  </div>
                   <button 
                     v-if="isProjectManager" 
                     @click="openAddMemberForm('Project Manager')" 
@@ -36,12 +42,18 @@
               <div>
                 <h4 class="font-semibold">Designers</h4>
                 <div class="flex space-x-2 items-center">
-                  <ProfileAvatar 
+                  <div 
                     v-for="member in project.members.filter(m => m.role === 'Designer')" 
                     :key="member.name" 
-                    :name="member.name" 
-                    :title="member.role" 
-                  />
+                    class="relative group"
+                  >
+                    <ProfileAvatar :name="member.name" :title="member.role" />
+                    <button 
+                      v-if="isProjectManager" 
+                      @click="confirmRemoveMember(member)"
+                      class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    >x</button>
+                  </div>
                   <button 
                     v-if="isProjectManager" 
                     @click="openAddMemberForm('Designer')" 
@@ -52,12 +64,18 @@
               <div>
                 <h4 class="font-semibold">Ontwikkelaars</h4>
                 <div class="flex space-x-2 items-center">
-                  <ProfileAvatar 
+                  <div 
                     v-for="member in project.members.filter(m => m.role === 'Ontwikkelaar')" 
                     :key="member.name" 
-                    :name="member.name" 
-                    :title="member.role" 
-                  />
+                    class="relative group"
+                  >
+                    <ProfileAvatar :name="member.name" :title="member.role" />
+                    <button 
+                      v-if="isProjectManager" 
+                      @click="confirmRemoveMember(member)"
+                      class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    >x</button>
+                  </div>
                   <button 
                     v-if="isProjectManager" 
                     @click="openAddMemberForm('Ontwikkelaar')" 
@@ -80,23 +98,24 @@
             <p>Geen materialen beschikbaar</p>
           </div>
           <button v-if="isProjectManager" @click="showMaterialForm = true" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded">Materiaal Toevoegen</button>
-          <div v-if="showMaterialForm" class="mt-2 bg-gray-100 p-4 rounded-md">
-            <input v-model="newMaterialName" placeholder="Naam Materiaal" class="border p-2 rounded" />
-            <input v-model="newMaterialLink" placeholder="Link Materiaal" class="border p-2 rounded ml-2" />
-            <button @click="addMaterial" class="bg-green-500 text-white px-4 py-2 rounded ml-2">Toevoegen</button>
-          </div>
         </ProjectBlock>
 
         <ProjectBlock title="Technische details" :initiallyOpen="false">
-          <div v-for="platform in project.platforms" :key="platform.name" class="mt-4 bg-gray-100 p-4 rounded-md">
+          <div v-for="(platform, index) in project.platforms" :key="platform.name" class="mt-4 bg-gray-100 p-4 rounded-md">
             <h4 class="font-semibold">{{ platform.name }}</h4>
             <p><strong>Type:</strong> {{ platform.type }}</p>
             <p><strong>Formaten:</strong></p>
             <ul>
               <li v-for="format in platform.formats" :key="format">{{ format }}</li>
             </ul>
+            <div v-if="isProjectManager" class="mt-2 flex space-x-2">
+              <button @click="openEditPlatformForm(index)" class="bg-yellow-500 text-white px-4 py-2 rounded">Bewerken</button>
+              <button @click="confirmRemovePlatform(index)" class="bg-red-500 text-white px-4 py-2 rounded">Verwijderen</button>
+            </div>
           </div>
-          <div class="mt-4 bg-gray-100 p-4 rounded-md">
+          <button v-if="isProjectManager" @click="openAddPlatformForm" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Technische details toevoegen</button>
+
+          <div class="mt-4">
             <h4 class="font-semibold">Design Opleveringen</h4>
             <div v-if="designDeliverables.length">
               <div v-for="design in designDeliverables" :key="design.name" class="mt-2 flex flex-col">
@@ -118,13 +137,8 @@
               <span class="ml-2 w-3 h-3 inline-block rounded-full bg-red-500"></span>
             </div>
             <button v-if="canAddDesign" @click="showDesignForm = true" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded">Werk Toevoegen</button>
-            <div v-if="showDesignForm" class="mt-2 bg-gray-100 p-4 rounded-md">
-              <input v-model="newDesignName" placeholder="Naam Werk" class="border p-2 rounded" />
-              <input v-model="newDesignLink" placeholder="Link Werk" class="border p-2 rounded ml-2" />
-              <button @click="addDesign" class="bg-green-500 text-white px-4 py-2 rounded ml-2">Toevoegen</button>
-            </div>
           </div>
-          <div class="mt-4 bg-gray-100 p-4 rounded-md">
+          <div class="mt-4">
             <h4 class="font-semibold">Ontwikkeling Opleveringen</h4>
             <div v-if="developmentDeliverables.length">
               <div v-for="development in developmentDeliverables" :key="development.name" class="mt-2 flex flex-col">
@@ -146,11 +160,6 @@
               <span class="ml-2 w-3 h-3 inline-block rounded-full bg-red-500"></span>
             </div>
             <button v-if="canAddDevelopment" @click="showDevelopmentForm = true" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded">Werk Toevoegen</button>
-            <div v-if="showDevelopmentForm" class="mt-2 bg-gray-100 p-4 rounded-md">
-              <input v-model="newDevelopmentName" placeholder="Naam Werk" class="border p-2 rounded" />
-              <input v-model="newDevelopmentLink" placeholder="Link Werk" class="border p-2 rounded ml-2" />
-              <button @click="addDevelopment" class="bg-green-500 text-white px-4 py-2 rounded ml-2">Toevoegen</button>
-            </div>
           </div>
         </ProjectBlock>
       </div>
@@ -172,6 +181,58 @@
           </ul>
           <div class="flex justify-end">
             <button @click="closeAddMemberForm" class="bg-gray-500 text-white px-4 py-2 rounded">Annuleren</button>
+          </div>
+        </div>
+      </div>
+      <!-- Remove Member Confirmation Modal -->
+      <div v-if="showRemoveMemberConfirm" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
+        <div class="bg-white p-4 rounded shadow-lg">
+          <h2 class="text-xl font-semibold mb-4">Bevestiging</h2>
+          <p>Wil je {{ memberToRemove?.name }} verwijderen als {{ memberToRemove?.role }}?</p>
+          <div class="flex justify-end mt-4">
+            <button @click="removeMember" class="bg-red-500 text-white px-4 py-2 rounded mr-2">Ja</button>
+            <button @click="closeRemoveMemberConfirm" class="bg-gray-500 text-white px-4 py-2 rounded">Annuleren</button>
+          </div>
+        </div>
+      </div>
+      <!-- Add Platform Form Modal -->
+      <div v-if="showAddPlatformForm" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
+        <div class="bg-white p-4 rounded shadow-lg w-1/3 max-h-96 overflow-y-auto">
+          <h2 class="text-xl font-semibold mb-4">Technische details toevoegen</h2>
+          <select v-model="selectedPlatform" @change="updateSelectedFormats" class="border p-2 w-full rounded mb-4">
+            <option disabled value="">Selecteer een platform</option>
+            <option v-for="platform in availablePlatforms" :key="platform.name" :value="platform">{{ platform.name }}</option>
+          </select>
+          <div v-if="selectedPlatform">
+            <p><strong>Type:</strong> {{ selectedPlatform.type }}</p>
+            <div v-for="format in selectedPlatform.formats" :key="format" class="flex items-center">
+              <input type="checkbox" v-model="selectedFormats" :value="format" class="mr-2" checked />
+              <span>{{ format }}</span>
+            </div>
+          </div>
+          <div class="flex justify-end mt-4">
+            <button @click="addPlatform" :disabled="!selectedPlatform" class="bg-green-500 text-white px-4 py-2 rounded mr-2">Toevoegen</button>
+            <button @click="closeAddPlatformForm" class="bg-gray-500 text-white px-4 py-2 rounded">Annuleren</button>
+          </div>
+        </div>
+      </div>
+      <!-- Edit Platform Form Modal -->
+      <div v-if="showEditPlatformForm" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
+        <div class="bg-white p-4 rounded shadow-lg w-1/3 max-h-96 overflow-y-auto">
+          <h2 class="text-xl font-semibold mb-4">Technische details bewerken</h2>
+          <select v-model="selectedPlatform" @change="updateSelectedFormats" class="border p-2 w-full rounded mb-4" disabled>
+            <option v-for="platform in availablePlatforms" :key="platform.name" :value="platform">{{ platform.name }}</option>
+          </select>
+          <div v-if="selectedPlatform">
+            <p><strong>Type:</strong> {{ selectedPlatform.type }}</p>
+            <div v-for="format in availablePlatforms.find(p => p.name === selectedPlatform.name).formats" :key="format" class="flex items-center">
+              <input type="checkbox" v-model="selectedFormats" :value="format" class="mr-2" />
+              <span>{{ format }}</span>
+            </div>
+          </div>
+          <div class="flex justify-end mt-4">
+            <button @click="savePlatformChanges" :disabled="!selectedPlatform" class="bg-green-500 text-white px-4 py-2 rounded mr-2">Opslaan</button>
+            <button @click="closeEditPlatformForm" class="bg-gray-500 text-white px-4 py-2 rounded">Annuleren</button>
           </div>
         </div>
       </div>
@@ -223,7 +284,16 @@ const showAddMemberFormVisible = ref(false)
 const addMemberRole = ref('')
 const searchQuery = ref('')
 
+const showRemoveMemberConfirm = ref(false)
+const memberToRemove = ref(null)
+
+const showAddPlatformForm = ref(false)
+const showEditPlatformForm = ref(false)
+const selectedPlatform = ref('')
+const selectedFormats = ref([])
 const availableProfiles = ref([])
+const availablePlatforms = ref([])
+const platformIndexToEdit = ref(null)
 
 onMounted(async () => {
   try {
@@ -234,12 +304,13 @@ onMounted(async () => {
     }
     currentProfile.value = getCurrentProfile() // Ensure current profile is set
 
-    // Fetch available profiles
     const profilesResponse = await axios.get('http://localhost:4000/profiles')
     availableProfiles.value = profilesResponse.data
 
+    const platformsResponse = await axios.get('http://localhost:4000/platforms')
+    availablePlatforms.value = platformsResponse.data
   } catch (error) {
-    console.error('Error fetching project data:', error)
+    console.error('Error fetching data:', error)
   }
 })
 
@@ -390,4 +461,129 @@ const addMember = async (profile) => {
   })
   closeAddMemberForm()
 }
+
+const confirmRemoveMember = (member) => {
+  memberToRemove.value = member
+  showRemoveMemberConfirm.value = true
+}
+
+const removeMember = async () => {
+  project.value.members = project.value.members.filter(member => member !== memberToRemove.value)
+  await axios.patch(`http://localhost:4000/projects/${route.params.id}`, {
+    members: project.value.members
+  })
+  closeRemoveMemberConfirm()
+}
+
+const closeRemoveMemberConfirm = () => {
+  showRemoveMemberConfirm.value = false
+  memberToRemove.value = null
+}
+
+const openAddPlatformForm = () => {
+  selectedPlatform.value = ''
+  selectedFormats.value = []
+  showAddPlatformForm.value = true
+}
+
+const closeAddPlatformForm = () => {
+  showAddPlatformForm.value = false
+}
+
+const openEditPlatformForm = (index) => {
+  platformIndexToEdit.value = index
+  selectedPlatform.value = project.value.platforms[index]
+  selectedFormats.value = [...project.value.platforms[index].formats]
+  showEditPlatformForm.value = true
+}
+
+const closeEditPlatformForm = () => {
+  showEditPlatformForm.value = false
+  platformIndexToEdit.value = null
+}
+
+const updateSelectedFormats = () => {
+  if (selectedPlatform.value) {
+    selectedFormats.value = [...selectedPlatform.value.formats]
+  }
+}
+
+const addPlatform = async () => {
+  const newPlatform = {
+    name: selectedPlatform.value.name,
+    type: selectedPlatform.value.type,
+    formats: selectedFormats.value
+  }
+
+  if (!project.value.platforms) {
+    project.value.platforms = []
+  }
+
+  project.value.platforms.push(newPlatform)
+  await axios.patch(`http://localhost:4000/projects/${route.params.id}`, {
+    platforms: project.value.platforms
+  })
+
+  selectedPlatform.value = ''
+  selectedFormats.value = []
+  showAddPlatformForm.value = false
+}
+
+const savePlatformChanges = async () => {
+  const updatedPlatform = {
+    ...selectedPlatform.value,
+    formats: selectedFormats.value
+  }
+
+  project.value.platforms.splice(platformIndexToEdit.value, 1, updatedPlatform)
+  await axios.patch(`http://localhost:4000/projects/${route.params.id}`, {
+    platforms: project.value.platforms
+  })
+
+  closeEditPlatformForm()
+}
+
+const confirmRemovePlatform = (index) => {
+  if (confirm('Weet je zeker dat je dit platform wilt verwijderen?')) {
+    removePlatform(index)
+  }
+}
+
+const removePlatform = async (index) => {
+  project.value.platforms.splice(index, 1)
+  await axios.patch(`http://localhost:4000/projects/${route.params.id}`, {
+    platforms: project.value.platforms
+  })
+}
 </script>
+
+<style scoped>
+.cursor-pointer:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-avatar {
+  position: relative;
+}
+
+.profile-avatar:hover .remove-icon {
+  opacity: 1;
+}
+
+.remove-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+</style>
