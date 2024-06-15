@@ -11,11 +11,11 @@
             <div><strong>Geplande opleverdatum:</strong> {{ project.dueDate }}</div>
           </div>
           <div class="mt-4 bg-gray-100 p-4 rounded-md">
-            <h3 class="font-semibold">Briefing/Projectbeschrijving</h3>
+            <h3 class="font-bold">Briefing/Projectbeschrijving</h3>
             <p>{{ project.description }}</p>
           </div>
           <div class="mt-4 bg-gray-100 p-4 rounded-md">
-            <h3 class="font-semibold">Betrokkenen</h3>
+            <h3 class="font-bold">Betrokkenen</h3>
             <div class="grid grid-cols-3 gap-4">
               <div>
                 <h4 class="font-semibold">Projectmanager</h4>
@@ -102,7 +102,7 @@
 
         <ProjectBlock title="Technische details" :initiallyOpen="false">
           <div v-for="(platform, index) in project.platforms" :key="platform.name" class="mt-4 bg-gray-100 p-4 rounded-md">
-            <h4 class="font-semibold">{{ platform.name }}</h4>
+            <p><strong>Platform:</strong> {{ platform.name }}</p>
             <p><strong>Type:</strong> {{ platform.type }}</p>
             <p><strong>Formaten:</strong></p>
             <ul>
