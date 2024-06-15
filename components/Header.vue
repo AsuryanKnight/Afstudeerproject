@@ -5,8 +5,8 @@
       </div>
       <nav class="flex items-center space-x-6 ml-auto">
         <nuxt-link to="/" exact class="hover:underline" :class="{ 'underline': $route.path === '/' }">Alle projecten</nuxt-link>
-        <nuxt-link to="/create-project" class="hover:underline" :class="{ 'underline': $route.path === '/create-project' }">Nieuw project aanmaken</nuxt-link>
         <nuxt-link to="/my-projects" class="hover:underline" :class="{ 'underline': $route.path === '/my-projects' }">Mijn projecten</nuxt-link>
+        <nuxt-link to="/create-project" class="hover:underline" :class="{ 'underline': $route.path === '/create-project' }">Nieuw project aanmaken</nuxt-link>
       </nav>
       <div class="relative ml-6">
         <ProfileAvatar v-if="currentProfile" :name="currentProfile.name" @click="toggleDropdown" />

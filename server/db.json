@@ -441,10 +441,10 @@
           "icon": "/profile-icons/sb.png"
         },
         {
-          "id": 3,
-          "name": "Klaas Klaassen",
-          "role": "Ontwikkelaar",
-          "icon": "/profile-icons/kk.png"
+          "id": "2",
+          "name": "Piet Pietersen",
+          "icon": "/profile-icons/pp.png",
+          "role": "Ontwikkelaar"
         }
       ],
       "materials": [
@@ -475,6 +475,22 @@
           "date": "2024-06-13T13:11:09.271Z",
           "comment": "",
           "type": "development"
+        },
+        {
+          "name": "teas",
+          "link": "eastst.com",
+          "status": "Afgewezen",
+          "date": "2024-06-15T23:51:27.232Z",
+          "comment": "Test",
+          "type": "design"
+        },
+        {
+          "name": "eeat",
+          "link": "sdasad.com",
+          "status": "Goedgekeurd",
+          "date": "2024-06-15T23:52:06.084Z",
+          "comment": "",
+          "type": "design"
         }
       ]
     }

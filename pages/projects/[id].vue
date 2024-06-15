@@ -92,6 +92,7 @@
             <li v-for="material in project.materials" :key="material.name">
               <strong>{{ material.name }}:</strong> 
               <a :href="material.reference" target="_blank" class="ml-2 text-blue-500">{{ material.reference }}</a>
+              <button v-if="isProjectManager" @click="confirmRemoveMaterial(material)" class="ml-2 bg-red-500 text-white px-2 py-1 rounded">Verwijderen</button>
             </li>
           </ul>
           <div v-if="!project.materials || project.materials.length === 0" class="mt-2 bg-gray-100 p-4 rounded-md">
@@ -114,7 +115,9 @@
             </div>
           </div>
           <button v-if="isProjectManager" @click="openAddPlatformForm" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Technische details toevoegen</button>
+        </ProjectBlock>
 
+        <ProjectBlock title="Opleveringen" :initiallyOpen="false">
           <div class="mt-4">
             <h4 class="font-semibold">Design Opleveringen</h4>
             <div v-if="designDeliverables.length">
@@ -137,6 +140,11 @@
               <span class="ml-2 w-3 h-3 inline-block rounded-full bg-red-500"></span>
             </div>
             <button v-if="canAddDesign" @click="showDesignForm = true" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded">Werk Toevoegen</button>
+            <div v-if="showDesignForm" class="mt-2 bg-gray-100 p-4 rounded-md">
+              <input v-model="newDesignName" placeholder="Naam Werk" class="border p-2 rounded" />
+              <input v-model="newDesignLink" placeholder="Link Werk" class="border p-2 rounded ml-2" />
+              <button @click="addDesign" class="bg-green-500 text-white px-4 py-2 rounded ml-2">Toevoegen</button>
+            </div>
           </div>
           <div class="mt-4">
             <h4 class="font-semibold">Ontwikkeling Opleveringen</h4>
@@ -160,6 +168,11 @@
               <span class="ml-2 w-3 h-3 inline-block rounded-full bg-red-500"></span>
             </div>
             <button v-if="canAddDevelopment" @click="showDevelopmentForm = true" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded">Werk Toevoegen</button>
+            <div v-if="showDevelopmentForm" class="mt-2 bg-gray-100 p-4 rounded-md">
+              <input v-model="newDevelopmentName" placeholder="Naam Werk" class="border p-2 rounded" />
+              <input v-model="newDevelopmentLink" placeholder="Link Werk" class="border p-2 rounded ml-2" />
+              <button @click="addDevelopment" class="bg-green-500 text-white px-4 py-2 rounded ml-2">Toevoegen</button>
+            </div>
           </div>
         </ProjectBlock>
       </div>
