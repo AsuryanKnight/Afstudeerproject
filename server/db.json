@@ -243,11 +243,26 @@
           "name": "Lisa van Dam",
           "role": "Designer",
           "icon": "/profile-icons/ld.png"
+        },
+        {
+          "id": "3",
+          "name": "Klaas Klaassen",
+          "icon": "/profile-icons/kk.png",
+          "role": "Ontwikkelaar"
         }
       ],
       "materials": [],
       "platforms": [],
-      "deliverables": []
+      "deliverables": [
+        {
+          "name": "Initiële designs",
+          "link": "figma.com",
+          "status": "Goedgekeurd",
+          "date": "2024-06-24T12:49:38.085Z",
+          "comment": "",
+          "type": "design"
+        }
+      ]
     },
     {
       "id": "6",
@@ -493,6 +508,140 @@
           "type": "design"
         }
       ]
+    },
+    {
+      "id": "cb63",
+      "name": "ITT2407",
+      "client": "Intertoys",
+      "group": "",
+      "dueDate": "2024-07-05",
+      "description": "Nieuwe banners voor medewerkers werving",
+      "members": [
+        {
+          "id": "4",
+          "name": "Anna de Vries",
+          "icon": "/profile-icons/ad.png",
+          "role": "Project Manager"
+        },
+        {
+          "id": "5",
+          "name": "Mark Rutte",
+          "icon": "/profile-icons/mr.png",
+          "role": "Designer"
+        },
+        {
+          "id": "7",
+          "name": "Willem de Boer",
+          "icon": "/profile-icons/wb.png",
+          "role": "Ontwikkelaar"
+        }
+      ],
+      "materials": [
+        {
+          "name": "Materialen vanaf de klant",
+          "reference": "Example.com"
+        },
+        {
+          "name": "Verzamelde materialen",
+          "reference": "Example2.com"
+        }
+      ],
+      "platforms": [
+        {
+          "name": "Adform",
+          "type": "HTML ad",
+          "formats": [
+            "300x250",
+            "336x280",
+            "160x600",
+            "300x600",
+            "970x250",
+            "320x100",
+            "200x200"
+          ]
+        }
+      ],
+      "deliverables": [
+        {
+          "name": "DesignsV1",
+          "link": "Figma.com",
+          "status": "Goedgekeurd",
+          "date": "2024-06-24T12:47:14.221Z",
+          "comment": "",
+          "type": "design"
+        },
+        {
+          "name": "Testomgeving banners",
+          "link": "Github.com",
+          "status": "Afgewezen",
+          "date": "2024-06-24T12:48:11.086Z",
+          "comment": "160x600 ontbreekt",
+          "type": "development"
+        }
+      ]
+    },
+    {
+      "id": "b145",
+      "name": "KLM-001",
+      "client": "KLM",
+      "group": "",
+      "dueDate": "2024-04-25",
+      "description": "Bannerset voor werving piloten",
+      "members": [
+        {
+          "id": "4",
+          "name": "Anna de Vries",
+          "icon": "/profile-icons/ad.png",
+          "role": "Project Manager"
+        },
+        {
+          "id": "6",
+          "name": "Sanne Bakker",
+          "icon": "/profile-icons/sb.png",
+          "role": "Designer"
+        },
+        {
+          "id": "8",
+          "name": "Daan van Dijk",
+          "icon": "/profile-icons/dd.png",
+          "role": "Ontwikkelaar"
+        }
+      ],
+      "materials": [
+        {
+          "name": "Miro",
+          "reference": " miro.com"
+        }
+      ],
+      "platforms": [
+        {
+          "name": "Qompas",
+          "type": "Top Banner",
+          "formats": [
+            "980x100"
+          ]
+        },
+        {
+          "name": "Adform",
+          "type": "HTML ad",
+          "formats": [
+            "300x250",
+            "336x280",
+            "160x600",
+            "320x100"
+          ]
+        },
+        {
+          "name": "Youtube Ads",
+          "type": "HTML ad",
+          "formats": [
+            "556x280",
+            "300x600",
+            "970x250",
+            "800x300"
+          ]
+        }
+      ]
     }
   ],
   "profiles": [
@@ -558,6 +707,31 @@
         "300x600",
         "970x250",
         "320x100"
+      ]
+    },
+    {
+      "name": "Qompas",
+      "type": "Top Banner",
+      "formats": [
+        "980x100"
+      ]
+    },
+    {
+      "name": "Qompas mail",
+      "type": "Direct mail",
+      "formats": [
+        "600x250"
+      ]
+    },
+    {
+      "name": "Youtube Ads",
+      "type": "HTML ad",
+      "formats": [
+        "300x250",
+        "556x280",
+        "300x600",
+        "970x250",
+        "800x300"
       ]
     }
   ]
