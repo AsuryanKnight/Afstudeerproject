@@ -88,18 +88,30 @@
         </ProjectBlock>
 
         <ProjectBlock title="Materialen" :initiallyOpen="false">
-          <ul class="bg-gray-100 p-4 rounded-md">
-            <li v-for="material in project.materials" :key="material.name">
-              <strong>{{ material.name }}:</strong> 
-              <a :href="material.reference" target="_blank" class="ml-2 text-blue-500">{{ material.reference }}</a>
-              <button v-if="isProjectManager" @click="confirmRemoveMaterial(material)" class="ml-2 bg-red-500 text-white px-2 py-1 rounded">Verwijderen</button>
-            </li>
-          </ul>
-          <div v-if="!project.materials || project.materials.length === 0" class="mt-2 bg-gray-100 p-4 rounded-md">
-            <p>Geen materialen beschikbaar</p>
-          </div>
-          <button v-if="isProjectManager" @click="showMaterialForm = true" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded">Materiaal Toevoegen</button>
-        </ProjectBlock>
+  <ul class="bg-gray-100 p-4 rounded-md">
+    <li v-for="(material, index) in project.materials" :key="index" class="flex items-center justify-between mb-2">
+      <div>
+        <strong>{{ material.name }}:</strong>
+        <a :href="material.reference" target="_blank" class="ml-2 text-blue-500">{{ material.reference }}</a>
+      </div>
+      <button 
+        v-if="isProjectManager" 
+        @click="confirmRemoveMaterial(index)" 
+        class="bg-red-500 text-white px-3 py-1 rounded"
+      >Verwijderen</button>
+    </li>
+  </ul>
+  <div v-if="!project.materials || project.materials.length === 0" class="mt-2 bg-gray-100 p-4 rounded-md">
+    <p>Geen materialen beschikbaar</p>
+  </div>
+  <button v-if="isProjectManager" @click="showMaterialForm = true" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded">Materiaal Toevoegen</button>
+  <div v-if="showMaterialForm" class="mt-2 bg-gray-100 p-4 rounded-md">
+    <input v-model="newMaterialName" placeholder="Naam Materiaal" class="border p-2 rounded" />
+    <input v-model="newMaterialLink" placeholder="Link Materiaal" class="border p-2 rounded ml-2" />
+    <button @click="addMaterial" class="bg-green-500 text-white px-4 py-2 rounded ml-2">Toevoegen</button>
+  </div>
+</ProjectBlock>
+
 
         <ProjectBlock title="Technische details" :initiallyOpen="false">
           <div v-for="(platform, index) in project.platforms" :key="platform.name" class="mt-4 bg-gray-100 p-4 rounded-md">
@@ -208,6 +220,17 @@
           </div>
         </div>
       </div>
+      <!-- Remove Material Confirmation Modal -->
+      <div v-if="showRemoveMaterialConfirm" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
+        <div class="bg-white p-4 rounded shadow-lg">
+          <h2 class="text-xl font-semibold mb-4">Bevestiging</h2>
+          <p>Wil je dit materiaal verwijderen?</p>
+          <div class="flex justify-end mt-4">
+            <button @click="removeMaterial" class="bg-red-500 text-white px-4 py-2 rounded mr-2">Ja</button>
+            <button @click="closeRemoveMaterialConfirm" class="bg-gray-500 text-white px-4 py-2 rounded">Annuleren</button>
+          </div>
+        </div>
+      </div>
       <!-- Add Platform Form Modal -->
       <div v-if="showAddPlatformForm" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
         <div class="bg-white p-4 rounded shadow-lg w-1/3 max-h-96 overflow-y-auto">
@@ -246,6 +269,17 @@
           <div class="flex justify-end mt-4">
             <button @click="savePlatformChanges" :disabled="!selectedPlatform" class="bg-green-500 text-white px-4 py-2 rounded mr-2">Opslaan</button>
             <button @click="closeEditPlatformForm" class="bg-gray-500 text-white px-4 py-2 rounded">Annuleren</button>
+          </div>
+        </div>
+      </div>
+      <!-- Remove Platform Confirmation Modal -->
+      <div v-if="showRemovePlatformConfirm" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
+        <div class="bg-white p-4 rounded shadow-lg">
+          <h2 class="text-xl font-semibold mb-4">Bevestiging</h2>
+          <p>Wil je dit platform verwijderen?</p>
+          <div class="flex justify-end mt-4">
+            <button @click="removePlatform" class="bg-red-500 text-white px-4 py-2 rounded mr-2">Ja</button>
+            <button @click="closeRemovePlatformConfirm" class="bg-gray-500 text-white px-4 py-2 rounded">Annuleren</button>
           </div>
         </div>
       </div>
@@ -300,8 +334,12 @@ const searchQuery = ref('')
 const showRemoveMemberConfirm = ref(false)
 const memberToRemove = ref(null)
 
+const showRemoveMaterialConfirm = ref(false)
+const selectedMaterialIndex = ref(null)
+
 const showAddPlatformForm = ref(false)
 const showEditPlatformForm = ref(false)
+const showRemovePlatformConfirm = ref(false)
 const selectedPlatform = ref('')
 const selectedFormats = ref([])
 const availableProfiles = ref([])
@@ -493,6 +531,24 @@ const closeRemoveMemberConfirm = () => {
   memberToRemove.value = null
 }
 
+const confirmRemoveMaterial = (index) => {
+  selectedMaterialIndex.value = index
+  showRemoveMaterialConfirm.value = true
+}
+
+const removeMaterial = async () => {
+  project.value.materials.splice(selectedMaterialIndex.value, 1)
+  await axios.patch(`http://localhost:4000/projects/${route.params.id}`, {
+    materials: project.value.materials
+  })
+  closeRemoveMaterialConfirm()
+}
+
+const closeRemoveMaterialConfirm = () => {
+  showRemoveMaterialConfirm.value = false
+  selectedMaterialIndex.value = null
+}
+
 const openAddPlatformForm = () => {
   selectedPlatform.value = ''
   selectedFormats.value = []
@@ -557,16 +613,21 @@ const savePlatformChanges = async () => {
 }
 
 const confirmRemovePlatform = (index) => {
-  if (confirm('Weet je zeker dat je dit platform wilt verwijderen?')) {
-    removePlatform(index)
-  }
+  platformIndexToEdit.value = index
+  showRemovePlatformConfirm.value = true
 }
 
-const removePlatform = async (index) => {
-  project.value.platforms.splice(index, 1)
+const removePlatform = async () => {
+  project.value.platforms.splice(platformIndexToEdit.value, 1)
   await axios.patch(`http://localhost:4000/projects/${route.params.id}`, {
     platforms: project.value.platforms
   })
+  closeRemovePlatformConfirm()
+}
+
+const closeRemovePlatformConfirm = () => {
+  showRemovePlatformConfirm.value = false
+  platformIndexToEdit.value = null
 }
 </script>
 
