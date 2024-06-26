@@ -1,7 +1,7 @@
 <template>
     <header class="bg-gray-800 text-white p-4 flex justify-between items-center">
       <div class="flex items-center">
-        <nuxt-link to="/" class="text-2xl font-bold">Project Management</nuxt-link>
+        <nuxt-link to="/" class="text-2xl font-bold">Radancy banner projecten</nuxt-link>
       </div>
       <nav class="flex items-center space-x-6 ml-auto">
         <nuxt-link to="/" exact class="hover:underline" :class="{ 'underline': $route.path === '/' }">Alle projecten</nuxt-link>
