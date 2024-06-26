@@ -1,69 +1,296 @@
 
-# Project Management Application
+# Project Naam
 
-## Overview
+Een kort overzicht van wat dit project doet en wat het doel is.
 
-This Nuxt 3 based project management application is designed to streamline team collaboration and project tracking. It includes functionalities similar to popular tools like Asana.
+## Installatie
 
-## Project Structure
+Volg deze stappen om het project lokaal op te zetten.
 
-- `assets`: Contains static resources for the application, primarily stylesheets.
-- `components`: Reusable Vue components. Each component is automatically imported where needed, thanks to Nuxt 3's auto-import feature.
-- `pages`: Each Vue file in this directory corresponds to a route. Nuxt handles routing automatically based on the file structure.
-- `server`: Contains a mock server implementation using JSON Server to simulate API calls and responses.
-- `utils`: Utility functions that provide additional functionality across various components and pages.
+### Vereisten
 
-## Local Setup
+- Node.js (versie 14 of hoger)
+- npm (versie 6 of hoger) of yarn
 
-### Prerequisites
-- Node.js (version 12.x or higher)
-- npm (version 6.x or higher)
+### Stap-voor-stap installatie
 
-### Installation
+1. Clone de repository
+    ```sh
+    git clone <repository-url>
+    cd <repository-map>
+    ```
 
-1. Clone the repository to your local machine.
-2. Navigate to the project directory and install the dependencies:
-   ```
-   npm install
-   ```
+2. Installeer de benodigde dependencies
+    ```sh
+    npm install
+    ```
+    of als je yarn gebruikt:
+    ```sh
+    yarn install
+    ```
 
-### Running the Application
+3. Start de ontwikkelserver
+    ```sh
+    npm run dev
+    ```
+    of als je yarn gebruikt:
+    ```sh
+    yarn dev
+    ```
 
-1. Start the development server:
-   ```
-   npm run dev
-   ```
+4. Start de lokale gesimuleerde backend server
+    ```sh
+    npm run json-server
 
-This command serves the app at `http://localhost:3000` and provides hot reloading.
 
-### Running the JSON Server
 
-1. To simulate the backend, we use JSON Server, which reads from the `server/db.json` file.
-2. Start the JSON Server:
-   ```
-   npm run json-server
-   ```
+De applicatie zou nu lokaal beschikbaar moeten zijn op `localhost:3000`.
+De gesimuleerde backend is te zien op `localhost:4000`
 
-This will host the mock API on `http://localhost:4000` by default. The data structure and endpoints are defined in `db.json`.
+## Projectstructuur
 
-## File Descriptions
+Een overzicht van de belangrijkste mappen en bestanden in het project:
 
-- `.gitignore` - Specifies intentionally untracked files to ignore.
-- `app.vue` - The main application component.
-- `nuxt.config.ts` - Configuration file for Nuxt-specific settings.
-- `tailwind.config.js` - Configuration for Tailwind CSS, which handles styling.
-- `tsconfig.json` - Contains TypeScript's compiler options.
-- `package.json` - Lists the project dependencies and scripts.
+```
+project-map/
+├── assets/
+│   └── css/
+│       └── tailwind.css
+├── components/
+│   ├── CommonLayout.vue
+│   ├── Header.vue
+│   ├── ProfileAvatar.vue
+│   ├── ProjectBlock.vue
+│   ├── ProjectCard.vue
+│   └── ProjectDetails.vue
+├── pages/
+│   ├── create-project.vue
+│   ├── index.vue
+│   ├── my-projects.vue
+│   └── projects/
+│       └── [id].vue
+├── server/
+│   ├── db.json
+│   └── index.js
+├── utils/
+│   └── profileManager.js
+├── app.vue
+├── nuxt.config.ts
+├── package.json
+├── tailwind.config.js
+└── tsconfig.json
+```
 
-## Working with the Application
+## Pagina's
 
-- **Components**: Each component under the `components` folder is self-contained, with its own styling and logic.
-- **Pages**: Files in the `pages` directory automatically become routes. For instance, `pages/index.vue` corresponds to the root URL.
+### Homepagina (`pages/index.vue`)
 
-## Contribution Guidelines
+De startpagina van de applicatie. Hier worden de belangrijkste functies van de applicatie geïntroduceerd.
 
-Contributors are encouraged to follow standard coding practices and submit changes via pull requests.
+### Mijn Projecten (`pages/my-projects.vue`)
 
-## License
+Een overzicht van alle projecten die door de gebruiker zijn aangemaakt.
 
-The project is licensed under the MIT License. Please see the `LICENSE.md` file for more details.
+### Project Aanmaken (`pages/create-project.vue`)
+
+Een formulier om een nieuw project aan te maken.
+
+### Project Details (`pages/projects/[id].vue`)
+
+Detailpagina voor een specifiek project. De `[id]` in de bestandsnaam betekent dat dit een dynamische route is op basis van het project-ID.
+
+## Componenten
+
+### CommonLayout.vue
+
+Een layout component dat gemeenschappelijke structuur en stijl definieert voor de pagina's.
+
+### Header.vue
+
+Een header component dat op elke pagina verschijnt en de navigatie bevat.
+
+### ProfileAvatar.vue
+
+Een component om de profielfoto van de gebruiker weer te geven.
+
+### ProjectBlock.vue
+
+Een component dat een projectblok weergeeft in een lijst.
+
+### ProjectCard.vue
+
+Een component voor het weergeven van projectinformatie in kaartformaat.
+
+### ProjectDetails.vue
+
+Een component voor de gedetailleerde weergave van een specifiek project.
+
+## Backend
+
+### Server Configuratie (`server/index.js`)
+
+De backend van dit project is opgezet met behulp van een locale json server. De server maakt gebruik van de `db.json` om een RESTful API te simuleren. Dit is handig voor prototyping en eenvoudige projecten.
+Verdere documentatie over deze backend is te vinden op `https://github.com/typicode/json-server`
+
+### Database (`server/db.json`)
+
+De database wordt gesimuleerd met een JSON-bestand. Dit bestand bevat voorbeeldgegevens voor gebruikers, projecten en beschikbare platformen en de formaten die daarbij horen voor banners. Hier is een voorbeeld van de structuur:
+
+```json
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Gebruiker 1",
+      "email": "gebruiker1@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Gebruiker 2",
+      "email": "gebruiker2@example.com"
+    }
+  ],
+  "projects": [
+    {
+      "id": "ProjectId",
+      "name": "Project name/code",
+      "client": "klantnaam",
+      "group": "projectgroup name",
+      "dueDate": "2024-04-25",
+      "description": "Projectbeschrijving",
+      "members": [
+        {
+          "id": "4",
+          "name": "User 4",
+          "icon": "/profile-icons/ad.png",
+          "role": "Project Manager"
+        },
+        {
+          "id": "6",
+          "name": "User 6",
+          "icon": "/profile-icons/sb.png",
+          "role": "Designer"
+        },
+        {
+          "id": "8",
+          "name": "User 89",
+          "icon": "/profile-icons/dd.png",
+          "role": "Ontwikkelaar"
+        }
+      ],
+      "materials": [
+        {
+          "name": "Materiaal 1",
+          "reference": "Materiaal1.com"
+        }
+      ],
+      "platforms": [
+        {
+          "name": "Qompas",
+          "type": "Top Banner",
+          "formats": [
+            "980x100"
+          ]
+        },
+        {
+          "name": "Adform",
+          "type": "HTML ad",
+          "formats": [
+            "300x250",
+            "336x280",
+            "160x600",
+            "320x100"
+          ]
+        },
+        {
+          "name": "Youtube Ads",
+          "type": "HTML ad",
+          "formats": [
+            "556x280",
+            "300x600",
+            "970x250",
+            "800x300"
+          ]
+        }
+      ]
+    }
+  ],
+  "platforms": [
+    {
+      "name": "Adform",
+      "type": "HTML ad",
+      "formats": [
+        "300x250",
+        "336x280",
+        "160x600",
+        "300x600",
+        "970x250",
+        "320x100"
+      ]
+    },
+    {
+      "name": "Qompas",
+      "type": "Top Banner",
+      "formats": [
+        "980x100",
+        "750x420"
+      ]
+    },
+    {
+      "name": "Qompas mail",
+      "type": "Direct mail",
+      "formats": [
+        "600x250",
+        "450x260"
+      ]
+    },
+    {
+      "name": "Youtube Ads",
+      "type": "HTML ad",
+      "formats": [
+        "300x250",
+        "556x280",
+        "300x600",
+        "970x250",
+        "800x300"
+      ]
+    }
+  ]
+}
+```
+
+### API Endpoints
+
+De volgende API endpoints zijn beschikbaar:
+
+- `GET /users` - Haalt alle gebruikers op
+- `GET /users/{id}` - Haalt een specifieke gebruiker op
+- `GET /projects` - Haalt alle projecten op
+- `GET /projects/{id}` - Haalt een specifiek project op
+- `POST /projects` - Maakt een nieuw project aan
+- `PUT /projects/{id}` - Bewerkt een bestaand project
+- `DELETE /projects/{id}` - Verwijdert een project
+
+### ProfileManager (`utils/profileManager.js`)
+
+Bevat functies voor het beheren van gebruikersprofielen.
+
+## Configuratie Bestanden
+
+### nuxt.config.ts
+
+Configuratiebestand voor Nuxt.js.
+
+### tailwind.config.js
+
+Configuratiebestand voor Tailwind CSS.
+
+### tsconfig.json
+
+TypeScript configuratiebestand.
+
+## Stijlen
+
+### Tailwind CSS (`assets/css/tailwind.css`)
+
+Tailwind CSS-bestand voor het beheren van de stijlen binnen het project.
