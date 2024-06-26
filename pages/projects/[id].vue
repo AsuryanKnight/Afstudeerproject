@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <CommonLayout />
     <div class="container mx-auto mt-4">
       <div v-if="project">
         <ProjectBlock title="Algemene info" :initiallyOpen="true">
@@ -299,12 +299,8 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+
 import axios from 'axios'
-import Header from '~/components/Header.vue'
-import ProfileAvatar from '~/components/ProfileAvatar.vue'
-import ProjectBlock from '~/components/ProjectBlock.vue'
 import { getCurrentProfile } from '~/utils/profileManager'
 
 const route = useRoute()

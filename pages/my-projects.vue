@@ -11,12 +11,10 @@
   </template>
   
   <script setup>
-  import { ref, onMounted } from 'vue'
+
   import axios from 'axios'
   import { getCurrentProfile } from '~/utils/profileManager'
-  import Header from '~/components/Header.vue'
-  import ProjectCard from '~/components/ProjectCard.vue'
-  
+
   const currentProfile = ref(getCurrentProfile())
   const projects = ref([])
   const filteredProjects = ref([])

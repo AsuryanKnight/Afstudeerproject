@@ -1,75 +1,69 @@
-# Nuxt 3 Minimal Starter
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# Project Management Application
 
-## Setup
+## Overview
 
-Make sure to install the dependencies:
+This Nuxt 3 based project management application is designed to streamline team collaboration and project tracking. It includes functionalities similar to popular tools like Asana.
 
-```bash
-# npm
-npm install
+## Project Structure
 
-# pnpm
-pnpm install
+- `assets`: Contains static resources for the application, primarily stylesheets.
+- `components`: Reusable Vue components. Each component is automatically imported where needed, thanks to Nuxt 3's auto-import feature.
+- `pages`: Each Vue file in this directory corresponds to a route. Nuxt handles routing automatically based on the file structure.
+- `server`: Contains a mock server implementation using JSON Server to simulate API calls and responses.
+- `utils`: Utility functions that provide additional functionality across various components and pages.
 
-# yarn
-yarn install
+## Local Setup
 
-# bun
-bun install
-```
+### Prerequisites
+- Node.js (version 12.x or higher)
+- npm (version 6.x or higher)
 
-## Development Server
+### Installation
 
-Start the development server on `http://localhost:3000`:
+1. Clone the repository to your local machine.
+2. Navigate to the project directory and install the dependencies:
+   ```
+   npm install
+   ```
 
-```bash
-# npm
-npm run dev
+### Running the Application
 
-# pnpm
-pnpm run dev
+1. Start the development server:
+   ```
+   npm run dev
+   ```
 
-# yarn
-yarn dev
+This command serves the app at `http://localhost:3000` and provides hot reloading.
 
-# bun
-bun run dev
-```
+### Running the JSON Server
 
-## Production
+1. To simulate the backend, we use JSON Server, which reads from the `server/db.json` file.
+2. Start the JSON Server:
+   ```
+   npm run json-server
+   ```
 
-Build the application for production:
+This will host the mock API on `http://localhost:4000` by default. The data structure and endpoints are defined in `db.json`.
 
-```bash
-# npm
-npm run build
+## File Descriptions
 
-# pnpm
-pnpm run build
+- `.gitignore` - Specifies intentionally untracked files to ignore.
+- `app.vue` - The main application component.
+- `nuxt.config.ts` - Configuration file for Nuxt-specific settings.
+- `tailwind.config.js` - Configuration for Tailwind CSS, which handles styling.
+- `tsconfig.json` - Contains TypeScript's compiler options.
+- `package.json` - Lists the project dependencies and scripts.
 
-# yarn
-yarn build
+## Working with the Application
 
-# bun
-bun run build
-```
+- **Components**: Each component under the `components` folder is self-contained, with its own styling and logic.
+- **Pages**: Files in the `pages` directory automatically become routes. For instance, `pages/index.vue` corresponds to the root URL.
 
-Locally preview production build:
+## Contribution Guidelines
 
-```bash
-# npm
-npm run preview
+Contributors are encouraged to follow standard coding practices and submit changes via pull requests.
 
-# pnpm
-pnpm run preview
+## License
 
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+The project is licensed under the MIT License. Please see the `LICENSE.md` file for more details.

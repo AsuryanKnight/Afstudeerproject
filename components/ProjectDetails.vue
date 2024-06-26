@@ -47,8 +47,6 @@
   </template>
   
   <script setup>
-  import { defineProps } from 'vue'
-  import ProfileIcon from './ProfileIcon.vue'
   
   const props = defineProps({
     project: Object

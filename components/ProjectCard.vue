@@ -35,9 +35,6 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useRouter } from 'vue-router'
-import ProfileAvatar from '~/components/ProfileAvatar.vue'
 
 const props = defineProps({
   project: {

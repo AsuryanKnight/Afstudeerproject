@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <CommonLayout />
     <div class="container mx-auto mt-4">
       <ProjectBlock title="Algemene info" :initiallyOpen="true">
         <div class="grid grid-cols-2 gap-4 bg-gray-100 p-4 rounded-md">
@@ -237,12 +237,8 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+
 import axios from 'axios'
-import Header from '~/components/Header.vue'
-import ProfileAvatar from '~/components/ProfileAvatar.vue'
-import ProjectBlock from '~/components/ProjectBlock.vue'
 import { getCurrentProfile } from '~/utils/profileManager'
 
 const router = useRouter()

@@ -21,10 +21,6 @@
   </template>
   
   <script setup>
-  import { ref, onMounted } from 'vue'
-  import { useRouter } from 'vue-router'
-  import { fetchProfiles, getCurrentProfile, setCurrentProfile, getProfiles } from '~/utils/profileManager'
-  import ProfileAvatar from '~/components/ProfileAvatar.vue'
   
   const currentProfile = ref(null)
   const profiles = ref([])

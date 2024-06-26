@@ -11,10 +11,7 @@
   </template>
   
   <script setup>
-  import { ref, onMounted } from 'vue'
   import axios from 'axios'
-  import Header from '~/components/Header.vue'
-  import ProjectCard from '~/components/ProjectCard.vue'
   
   const projects = ref([])
   
