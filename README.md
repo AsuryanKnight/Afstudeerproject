@@ -1,7 +1,7 @@
 
-# Project Naam
+# Radancy banner projects
 
-Een kort overzicht van wat dit project doet en wat het doel is.
+Dit project is een prototype voor een projectmanagement applicatie die bedoeld is voor intern gebruik bij Radancy. Deze applicatie is afgesteld op het realisatieproces van online reclamebanners die bij Radancy gemaakt worden. Met deze applicatie kunnen de projectdetails, statussen, aangeleverde materialen en opgeleverd werk van projecten bekeken worden en nieuwe projecten worden aangemaakt. De applicatie is afgesteld om te werken alleen tijdens het realisatieproces van banners en dient als een proof of concept. 
 
 ## Installatie
 
@@ -38,7 +38,7 @@ Volg deze stappen om het project lokaal op te zetten.
     yarn dev
     ```
 
-4. Start de lokale gesimuleerde backend server
+4. Start de lokaal gesimuleerde backend server
     ```sh
     npm run json-server
 
@@ -85,15 +85,15 @@ project-map/
 
 ### Homepagina (`pages/index.vue`)
 
-De startpagina van de applicatie. Hier worden de belangrijkste functies van de applicatie geïntroduceerd.
+De startpagina van de applicatie. Hier word een overzicht weergegeven van alle projecten.
 
 ### Mijn Projecten (`pages/my-projects.vue`)
 
-Een overzicht van alle projecten die door de gebruiker zijn aangemaakt.
+Een overzicht van alle projecten waar de huidige gebruiker op aangewezen staat. 
 
 ### Project Aanmaken (`pages/create-project.vue`)
 
-Een formulier om een nieuw project aan te maken.
+Een formulier om een nieuw project aan te maken. Als aanmaker van het project word het huidige profiel toegevoegd aan het project als projectmanager.
 
 ### Project Details (`pages/projects/[id].vue`)
 
@@ -111,26 +111,22 @@ Een header component dat op elke pagina verschijnt en de navigatie bevat.
 
 ### ProfileAvatar.vue
 
-Een component om de profielfoto van de gebruiker weer te geven.
+Een component om de profielfoto van een gebruiker weer te geven.
 
 ### ProjectBlock.vue
 
-Een component dat een projectblok weergeeft in een lijst.
+Een component waarin details staan van een project. Een ProjectBlok kan in/uit-geklapt worden. 
 
 ### ProjectCard.vue
 
-Een component voor het weergeven van projectinformatie in kaartformaat.
-
-### ProjectDetails.vue
-
-Een component voor de gedetailleerde weergave van een specifiek project.
+Een herbruikbaar component voor het weergeven van projectinformatie in een lijst op index.vue en my-projects.vue.
 
 ## Backend
 
 ### Server Configuratie (`server/index.js`)
 
 De backend van dit project is opgezet met behulp van een locale json server. De server maakt gebruik van de `db.json` om een RESTful API te simuleren. Dit is handig voor prototyping en eenvoudige projecten.
-Verdere documentatie over deze backend is te vinden op `https://github.com/typicode/json-server`
+Verdere documentatie over deze backend is te vinden op: `https://github.com/typicode/json-server`.
 
 ### Database (`server/db.json`)
 
@@ -273,7 +269,7 @@ De volgende API endpoints zijn beschikbaar:
 
 ### ProfileManager (`utils/profileManager.js`)
 
-Bevat functies voor het beheren van gebruikersprofielen.
+Bevat functies voor het beheren van gebruikersprofielen en het lokaal opslaan van het huidige profiel.
 
 ## Configuratie Bestanden
 
